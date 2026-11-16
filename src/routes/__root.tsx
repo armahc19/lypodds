@@ -134,7 +134,7 @@ function RootComponent() {
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </AppShell>
-        <Toaster position="bottom-right" richColors closeButton />
+        <Toaster position="bottom-right" theme="dark" richColors closeButton />
       </SimProvider>
     </QueryClientProvider>
   );
