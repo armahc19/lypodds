@@ -90,7 +90,7 @@ export function SimProvider({ children }: { children: ReactNode }) {
     if (!batch || !items.length) return;
     const net = items.reduce((s, p) => s + p.payout - p.stake, 0);
     if (items.length === 1) {
-      const p = items[0];
+      const p = items[0]!;
       const pick = selectionLabel(p.selection, { home: p.homeShort, away: p.awayShort });
       const title = p.status === "won" ? `Won ${fmtPts(p.payout)} pts` : p.status === "lost" ? `Lost ${fmtPts(p.stake)} pts` : "Prediction voided — stake returned";
       const fn = p.status === "won" ? toast.success : p.status === "lost" ? toast.error : toast;
