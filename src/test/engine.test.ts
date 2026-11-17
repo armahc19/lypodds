@@ -24,7 +24,7 @@ describe("possession BUY / SELL", () => {
   it("BUY wins when the index rises and pays stake × odds", () => {
     const { state } = liveState();
     const { position } = placePosition(state, { matchId: "m1", market: "possession", selection: "buy", stake: 100 });
-    const settled = settlePosition(position!, { ...state.matches[0], index: position!.entryIndex + 5 });
+    const settled = settlePosition(position!, { ...state.matches[0]!, index: position!.entryIndex + 5 });
     expect(settled.status).toBe("won");
     expect(settled.payout).toBe(Math.round(100 * position!.odds));
   });
@@ -32,13 +32,13 @@ describe("possession BUY / SELL", () => {
   it("SELL loses when the index rises", () => {
     const { state } = liveState();
     const { position } = placePosition(state, { matchId: "m1", market: "possession", selection: "sell", stake: 100 });
-    expect(settlePosition(position!, { ...state.matches[0], index: position!.entryIndex + 5 }).status).toBe("lost");
+    expect(settlePosition(position!, { ...state.matches[0]!, index: position!.entryIndex + 5 }).status).toBe("lost");
   });
 
   it("refunds the stake when the index ends exactly where it started", () => {
     const { state } = liveState();
     const { position } = placePosition(state, { matchId: "m1", market: "possession", selection: "buy", stake: 100 });
-    const s = settlePosition(position!, { ...state.matches[0], index: position!.entryIndex });
+    const s = settlePosition(position!, { ...state.matches[0]!, index: position!.entryIndex });
     expect(s.status).toBe("void");
     expect(s.payout).toBe(100);
   });
@@ -94,7 +94,7 @@ describe("five-minute rounds", () => {
     const { state: after, settled } = progressMatch(ready, "m1", mulberry32(1));
     const m = after.matches.find((x) => x.id === "m1")!;
     expect(settled).toHaveLength(1);
-    expect(settled[0].status).not.toBe("open");
+    expect(settled[0]!.status).not.toBe("open");
     expect(m.round.number).toBe(match.round.number + 1);
     expect(m.round.end - m.round.start).toBe(ROUND_SECONDS);
   });

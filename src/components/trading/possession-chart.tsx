@@ -39,7 +39,7 @@ export function PossessionChart({
   const last = pts[pts.length - 1] ?? { t: match.clock, v: match.index };
   const ref3 = pts[Math.max(0, pts.length - 4)] ?? last;
   const rising = last.v >= ref3.v;
-  const area = pts.length > 1 ? `${line}L${x(last.t).toFixed(1)},${y0}L${x(pts[0].t).toFixed(1)},${y0}Z` : "";
+  const area = pts.length > 1 ? `${line}L${x(last.t).toFixed(1)},${y0}L${x(pts[0]!.t).toFixed(1)},${y0}Z` : "";
   const tx = x(last.t);
   const ty = y(last.v);
   const homeLead = last.v >= 0;

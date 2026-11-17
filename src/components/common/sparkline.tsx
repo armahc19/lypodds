@@ -22,11 +22,11 @@ export function Sparkline({
   const span = max - min || 1;
   const x = (i: number) => (i / (values.length - 1)) * width;
   const y = (v: number) => height - ((v - min) / span) * height;
-  const zero = centered ? y(0) : y(values[0]);
+  const zero = centered ? y(0) : y(values[0]!);
   const d = values.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
   const area = `${d}L${width},${zero}L0,${zero}Z`;
-  const last = values[values.length - 1];
-  const up = centered ? last >= 0 : last >= values[0];
+  const last = values[values.length - 1]!;
+  const up = centered ? last >= 0 : last >= values[0]!;
   return (
     <svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none" className={cn("w-full", className)}>
       <defs>
