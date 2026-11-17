@@ -106,7 +106,7 @@ export function PossessionChart({
             <text x={x(match.round.start) + 6} y={pad.t - 10} className="fill-primary font-mono text-[10px] font-semibold tracking-wider">
               R{match.round.number} OPEN
             </text>
-            {live && (
+            {live && x(we) - x(we - LOCK_SECONDS) >= 56 && (
               <text x={x(we - LOCK_SECONDS) - 4} y={pad.t - 10} textAnchor="end" className="fill-muted-foreground font-mono text-[9px] tracking-wider">
                 LOCK
               </text>
