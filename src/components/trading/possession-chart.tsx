@@ -107,7 +107,7 @@ export function PossessionChart({
               R{match.round.number} OPEN
             </text>
             {live && (
-              <text x={x(we - LOCK_SECONDS)} y={pad.t - 10} textAnchor="middle" className="fill-muted-foreground font-mono text-[9px] tracking-wider">
+              <text x={x(we - LOCK_SECONDS) - 4} y={pad.t - 10} textAnchor="end" className="fill-muted-foreground font-mono text-[9px] tracking-wider">
                 LOCK
               </text>
             )}
