@@ -15,6 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AppShell } from "@/components/layout/app-shell";
 import { Toaster } from "@/components/ui/sonner";
 import { SimProvider } from "@/lib/sim/store";
+import { AuthProvider } from "@/hooks/use-auth";
 
 function NotFoundComponent() {
   return (
@@ -129,13 +130,15 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SimProvider>
-        <AppShell>
-          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
-        </AppShell>
-        <Toaster position="bottom-right" theme="dark" richColors closeButton />
-      </SimProvider>
+      <AuthProvider>
+        <SimProvider>
+          <AppShell>
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+          </AppShell>
+          <Toaster position="bottom-right" theme="dark" richColors closeButton />
+        </SimProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

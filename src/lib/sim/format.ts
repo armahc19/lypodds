@@ -30,9 +30,9 @@ export function selectionLabel(
 ): string {
   switch (sel) {
     case "buy":
-      return `BUY ${teams.home}`;
+      return `HOME ${teams.home}`;
     case "sell":
-      return `SELL ${teams.away}`;
+      return `AWAY ${teams.away}`;
     case "home":
       return teams.home;
     case "away":

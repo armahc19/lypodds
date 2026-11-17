@@ -14,6 +14,7 @@ import { Logo, LogoMark } from "@/components/brand/logo";
 import { LiveDot } from "@/components/common/live-dot";
 import { fmtIndex, fmtMinute, fmtPts } from "@/lib/sim/format";
 import { useSim } from "@/lib/sim/store";
+import { useAuth } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -51,10 +52,11 @@ function LiveTicker() {
 
 function BalancePill() {
   const { state } = useSim();
+  const { profile } = useAuth();
   return (
     <Link to="/portfolio" className="flex items-center gap-2 rounded-md border border-border bg-surface-raised px-2.5 py-1.5 hover:border-primary/50">
       <Wallet className="size-4 text-primary" />
-      <span className="num text-sm font-semibold">{fmtPts(state.user.balance)}</span>
+      <span className="num text-sm font-semibold">{fmtPts(profile?.points ?? state.user.balance)}</span>
       <span className="hidden text-xs text-muted-foreground sm:inline">pts</span>
     </Link>
   );
@@ -62,6 +64,7 @@ function BalancePill() {
 
 export function AppShell({ children }: { children: ReactNode }) {
   const { state } = useSim();
+  const { user, profile } = useAuth();
   return (
     <div className="min-h-screen lg:pl-60">
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r border-sidebar-border bg-sidebar lg:flex">
@@ -105,9 +108,13 @@ export function AppShell({ children }: { children: ReactNode }) {
           <LiveTicker />
           {state.paused && <span className="hidden rounded-sm bg-primary/15 px-1.5 py-0.5 font-mono text-[0.62rem] font-semibold tracking-widest text-primary sm:inline">SIM PAUSED</span>}
           <BalancePill />
-          <Link to="/profile" className="flex size-8 items-center justify-center rounded-full bg-brand-gradient font-display text-xs font-bold text-primary-foreground" aria-label="Profile">
-            {state.user.username.slice(0, 2).toUpperCase()}
-          </Link>
+          {user ? (
+            <Link to="/profile" className="flex size-8 items-center justify-center rounded-full bg-brand-gradient font-display text-xs font-bold text-primary-foreground" aria-label="Profile">
+              {(profile?.username ?? user.email ?? state.user.username).slice(0, 2).toUpperCase()}
+            </Link>
+          ) : (
+            <a href="/auth" className="rounded-md border border-primary/50 px-2.5 py-1.5 text-xs font-semibold text-primary hover:bg-primary/10">Sign in</a>
+          )}
         </div>
       </header>
 

@@ -74,11 +74,11 @@ function Dashboard() {
               <RoundTimer match={f} />
               <div className="grid grid-cols-2 gap-2">
                 <div className="rounded-md bg-bull-soft p-2.5">
-                  <div className="label-caps">BUY {f.home.short}</div>
+                  <div className="label-caps">HOME {f.home.short}</div>
                   <OddsValue odds={f.quotes.possession.buy!.odds} className="text-xl font-bold text-bull" />
                 </div>
                 <div className="rounded-md bg-bear-soft p-2.5">
-                  <div className="label-caps">SELL {f.away.short}</div>
+                  <div className="label-caps">AWAY {f.away.short}</div>
                   <OddsValue odds={f.quotes.possession.sell!.odds} className="text-xl font-bold text-bear" />
                 </div>
               </div>

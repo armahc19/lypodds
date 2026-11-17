@@ -40,15 +40,15 @@ export function TradeTicket({ match }: { match: Match }) {
       <StakeInput value={stake} onChange={setStake} balance={state.user.balance} />
 
       <div className="grid grid-cols-2 gap-2">
-        <Button variant="buy" size="xl" disabled={!open} onClick={() => trade("buy")} className="flex-col gap-0.5" aria-label={`Buy ${match.home.name} at ${buy.odds}`}>
+        <Button variant="buy" size="xl" disabled={!open} onClick={() => trade("buy")} className="flex-col gap-0.5" aria-label={`Home: ${match.home.name} at ${buy.odds}`}>
           <span className="flex items-center gap-1 font-display text-lg tracking-wide">
-            <ArrowUp className="size-5" /> BUY
+            <ArrowUp className="size-5" /> HOME
           </span>
           <span className="num text-xs opacity-80">{match.home.short} · <OddsValue odds={buy.odds} /></span>
         </Button>
-        <Button variant="sell" size="xl" disabled={!open} onClick={() => trade("sell")} className="flex-col gap-0.5" aria-label={`Sell to ${match.away.name} at ${sell.odds}`}>
+        <Button variant="sell" size="xl" disabled={!open} onClick={() => trade("sell")} className="flex-col gap-0.5" aria-label={`Away: ${match.away.name} at ${sell.odds}`}>
           <span className="flex items-center gap-1 font-display text-lg tracking-wide">
-            <ArrowDown className="size-5" /> SELL
+            <ArrowDown className="size-5" /> AWAY
           </span>
           <span className="num text-xs opacity-80">{match.away.short} · <OddsValue odds={sell.odds} /></span>
         </Button>
@@ -67,7 +67,7 @@ export function TradeTicket({ match }: { match: Match }) {
         </div>
       </div>
       <p className="text-[0.7rem] leading-relaxed text-muted-foreground">
-        BUY predicts {match.home.short} pushes the index up by round close; SELL predicts {match.away.short} drags it down. Settled against your entry level. Virtual points only.
+        HOME predicts {match.home.short} pushes the index up by round close; AWAY predicts {match.away.short} drags it down. Settled against your entry level. Virtual points only.
       </p>
     </div>
   );

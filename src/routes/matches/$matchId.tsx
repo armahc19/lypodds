@@ -14,9 +14,9 @@ export const Route = createFileRoute("/matches/$matchId")({
   head: () => ({
     meta: [
       { title: "Trading Room — LYPODDS" },
-      { name: "description", content: "Trade live possession with BUY/SELL and predict goals, corners and shots in five-minute rounds." },
+      { name: "description", content: "Trade live possession with HOME/AWAY predictions and predict goals, corners and shots in five-minute rounds." },
       { property: "og:title", content: "Live Trading Room — LYPODDS" },
-      { property: "og:description", content: "BUY the home push, SELL the away push. Five-minute possession trading rounds." },
+      { property: "og:description", content: "Predict the home or away push in five-minute possession trading rounds." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -68,7 +68,7 @@ function TradingRoom() {
 
       <div className="panel p-4">
         <h2 className="mb-2 text-lg font-semibold">My positions on this match</h2>
-        <PositionsTable positions={mine} showMatch={false} empty="No positions on this match yet — BUY or SELL above." />
+        <PositionsTable positions={mine} showMatch={false} empty="No positions on this match yet — choose HOME or AWAY above." />
       </div>
     </div>
   );

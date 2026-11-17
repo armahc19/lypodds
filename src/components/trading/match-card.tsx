@@ -50,11 +50,11 @@ export function MatchCard({ match }: { match: Match }) {
       {live && (
         <div className="mt-3 grid grid-cols-2 gap-1.5">
           <div className="flex items-center justify-between rounded-md bg-bull-soft px-2 py-1.5 text-xs">
-            <span className="font-semibold text-bull">BUY</span>
+            <span className="font-semibold text-bull">HOME</span>
             <OddsValue odds={match.quotes.possession.buy!.odds} />
           </div>
           <div className="flex items-center justify-between rounded-md bg-bear-soft px-2 py-1.5 text-xs">
-            <span className="font-semibold text-bear">SELL</span>
+            <span className="font-semibold text-bear">AWAY</span>
             <OddsValue odds={match.quotes.possession.sell!.odds} />
           </div>
         </div>

@@ -59,8 +59,8 @@ function TradingPage() {
                 <th className="label-caps py-2 font-normal">Clock</th>
                 <th className="label-caps w-40 py-2 font-normal">Trend</th>
                 <th className="label-caps py-2 text-right font-normal">Index</th>
-                <th className="label-caps py-2 text-right font-normal">BUY</th>
-                <th className="label-caps py-2 text-right font-normal">SELL</th>
+                <th className="label-caps py-2 text-right font-normal">HOME</th>
+                <th className="label-caps py-2 text-right font-normal">AWAY</th>
                 <th className="label-caps py-2 text-right font-normal">Round</th>
                 <th className="py-2" />
               </tr>
@@ -100,7 +100,7 @@ function TradingPage() {
             <TabsTrigger value="history" className="data-[state=active]:bg-surface-raised">History ({positions.length})</TabsTrigger>
           </TabsList>
           <TabsContent value="open" className="mt-4">
-            <PositionsTable positions={open} empty="No open positions. Open a trading room and BUY or SELL." />
+            <PositionsTable positions={open} empty="No open positions. Open a trading room and choose HOME or AWAY." />
           </TabsContent>
           <TabsContent value="settled" className="mt-4">
             <PositionsTable positions={settled} empty="Nothing settled yet." />

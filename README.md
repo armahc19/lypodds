@@ -1,8 +1,25 @@
-# Creative Workspace
+# LYPODDS
 
-create
+LYPODDS is a real-time football prediction and virtual-points trading platform.
+The visual trading workspace and responsive design live here, while the Supabase
+authentication, market rules, positions, settlement, and admin server functions
+are integrated in the same application.
 
 This project was built with [Lovable](https://lovable.dev).
+
+## Architecture
+
+- `src/components/` contains the LYPODDS trading interface and reusable UI.
+- `src/lib/sim/` contains the local simulation experience used by the current
+  visual prototype.
+- `src/hooks/` and `src/integrations/supabase/` contain the Supabase-backed
+  account, match, and position data layer.
+- `src/lib/markets.ts` and `src/lib/trading.functions.ts` contain the shared
+  market rules and server-side trading operations.
+
+The local simulation and Supabase-backed experience are intentionally being
+converged. New trading features should use the server market rules and atomic
+position functions rather than creating a second balance or settlement system.
 
 ## Build with Lovable
 

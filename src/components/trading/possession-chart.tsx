@@ -124,7 +124,7 @@ export function PossessionChart({
         <path d={line} fill="none" className="stroke-bull" strokeWidth={compact ? 1.6 : 2.2} strokeLinejoin="round" clipPath={`url(#top${uid})`} />
         <path d={line} fill="none" className="stroke-bear" strokeWidth={compact ? 1.6 : 2.2} strokeLinejoin="round" clipPath={`url(#bot${uid})`} />
 
-        {/* Open BUY/SELL entries */}
+        {/* Open HOME/AWAY entries */}
         {entries.map((p) => {
           const ey = y(p.entryIndex);
           const ex = Math.max(pad.l, x(p.placedClock));
@@ -135,7 +135,7 @@ export function PossessionChart({
               <circle cx={ex} cy={ey} r="3" className={buy ? "fill-bull" : "fill-bear"} />
               {!compact && (
                 <text x={ex + 6} y={ey + (buy ? -6 : 13)} className={cn("font-mono text-[10px] font-semibold", buy ? "fill-bull" : "fill-bear")}>
-                  {buy ? "BUY" : "SELL"} {fmtPts(p.stake)} @ {fmtIndex(p.entryIndex)}
+                  {buy ? "HOME" : "AWAY"} {fmtPts(p.stake)} @ {fmtIndex(p.entryIndex)}
                 </text>
               )}
             </g>
