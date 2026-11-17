@@ -320,10 +320,11 @@ function nextFixture(state: SimState) {
   const inUse = new Set(state.matches.map((m) => m.home.id));
   for (let i = 0; i < FIXTURES.length; i++) {
     const idx = (state.fixtureCursor + i) % FIXTURES.length;
-    if (!inUse.has(FIXTURES[idx].home.id)) return { fixture: FIXTURES[idx], cursor: idx + 1 };
+    const f = FIXTURES[idx]!;
+    if (!inUse.has(f.home.id)) return { fixture: f, cursor: idx + 1 };
   }
   const idx = state.fixtureCursor % FIXTURES.length;
-  return { fixture: FIXTURES[idx], cursor: idx + 1 };
+  return { fixture: FIXTURES[idx]!, cursor: idx + 1 };
 }
 
 /** Advance one match by one tick, closing/settling the round and rotating fixtures as needed. */

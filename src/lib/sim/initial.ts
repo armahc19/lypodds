@@ -56,14 +56,14 @@ function seededUser(matchId: string, label: string, homeShort: string, awayShort
 
 export function createInitialState(seed = INITIAL_SEED): SimState {
   const rng = mulberry32(seed);
-  const finished = createMatch("m0", FIXTURES[6], 5400, "finished", rng);
+  const finished = createMatch("m0", FIXTURES[6]!, 5400, "finished", rng);
   const matches = [
-    createMatch("m1", FIXTURES[0], 2045, "live", rng),
-    createMatch("m2", FIXTURES[1], 3660, "live", rng),
-    createMatch("m3", FIXTURES[2], 720, "live", rng),
-    createMatch("m4", FIXTURES[3], 4680, "live", rng),
-    createMatch("m5", FIXTURES[4], 0, "upcoming", rng),
-    createMatch("m6", FIXTURES[5], 0, "upcoming", rng),
+    createMatch("m1", FIXTURES[0]!, 2045, "live", rng),
+    createMatch("m2", FIXTURES[1]!, 3660, "live", rng),
+    createMatch("m3", FIXTURES[2]!, 720, "live", rng),
+    createMatch("m4", FIXTURES[3]!, 4680, "live", rng),
+    createMatch("m5", FIXTURES[4]!, 0, "upcoming", rng),
+    createMatch("m6", FIXTURES[5]!, 0, "upcoming", rng),
     finished,
   ];
   const bots: Bot[] = BOT_PROFILES.map((p, i) => {

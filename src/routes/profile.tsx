@@ -50,7 +50,10 @@ function ProfilePage() {
 
   const save = () => {
     const clean = name.trim().replace(/\s+/g, "_").slice(0, 20);
-    if (clean.length < 3) return toast.error("Username needs at least 3 characters");
+    if (clean.length < 3) {
+      toast.error("Username needs at least 3 characters");
+      return;
+    }
     dispatch({ type: "SET_USERNAME", username: clean });
     setName(clean);
     toast.success("Username updated");

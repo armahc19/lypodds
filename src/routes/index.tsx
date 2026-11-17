@@ -103,7 +103,7 @@ function Dashboard() {
       </section>
 
       <section className="grid gap-4 xl:grid-cols-[1.6fr_1fr]">
-        <div className="panel p-4">
+        <div className="panel min-w-0 p-4">
           <div className="mb-3 flex items-center justify-between">
             <h2 className="text-lg font-semibold">Active markets</h2>
             <Link to="/trading" className="text-xs text-muted-foreground hover:text-primary">Market watch →</Link>
